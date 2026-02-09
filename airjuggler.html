@@ -1,0 +1,57 @@
+<!doctype html> <!--An indication of using modern HTML5-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Air Juggler (Webcam Controlled)</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;700&display=swap"/>
+        <link rel="stylesheet" href="airjuggler.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Air Juggler (Webcam Contolled)</h1>
+            <p class="instructions">Move your hands to keep the ball in the air!</p> <!--Purely informational-->
+        
+            <div class="canvas-wrapper">
+                <!-- Hidden video element for webcam, not being seen in CSS -->
+                <video id="webcam" autoplay playsinline></video>
+
+                <!-- Game canvas must match the size of the video -->
+                <canvas id="gameCanvas" width="640" height="480"></canvas>
+
+                <!-- Game state overlay,it floats above the canvas-->
+                <div id="overlay" class="overlay">
+                <h2 id="overlayMessage">Ready to Play?</h2>
+                <button id="startButton">Start Game</button>
+                </div>
+            </div>
+
+            <!-- Score display -->
+            <div id="scoreDisplay">
+                <p>Time: <span id="score">0</span>s</p>
+            </div>
+        </div>
+
+        <!-- Loading overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <h2>Loading TensorFlow.js</h2>
+            <p id="loadingStatus">Initializing models...</p>
+        </div>
+        </div>
+
+       <!--Where the detection system is utilised-->
+       <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+
+        <!-- Load game modules -->
+        <script src="airjuggler.js"></script>
+        <script src="game.js"></script>
+
+    </body>
+
+</html>
+
